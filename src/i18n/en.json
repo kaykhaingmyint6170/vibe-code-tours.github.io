@@ -16,7 +16,8 @@
     "apply": "Apply",
     "sponsors": "Sponsors",
     "faq": "FAQ",
-    "contact": "Contact"
+    "contact": "Contact",
+    "setup": "Setup"
   },
   "footer": {
     "rights": "© 2026 Vibe Code Tours",
@@ -284,5 +285,9 @@
   "privacy": {
     "title": "Privacy Policy — Vibe Code Tours",
     "description": "Vibe Code Tours Privacy Policy v1.0.0: what we collect, why, how long we keep it, who sees it, third parties, and your rights."
+  },
+  "setup": {
+    "title": "Setup Guide — Vibe Code Tours",
+    "description": "Get your machine ready before Chapter 1 — Linux, macOS, or Windows (WSL). Node, Python, Git, Claude Code, editor + extensions."
   }
 }

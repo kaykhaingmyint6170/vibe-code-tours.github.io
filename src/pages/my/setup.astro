@@ -1,0 +1,9 @@
+---
+import Base from '../../layouts/Base.astro';
+import SetupBody from '../../components/SetupBody.astro';
+import { t } from '../../i18n/utils';
+const s = t('my').setup;
+---
+<Base title={s.title} description={s.description}>
+  <SetupBody />
+</Base>

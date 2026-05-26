@@ -1,0 +1,160 @@
+---
+import { getLocale, localizedPath, type Locale } from '../i18n/utils';
+
+const locale: Locale = getLocale(Astro.url.pathname);
+const SCRIPT = 'https://gist.githubusercontent.com/kokoye2007/e8d30985faca6292a50bdd3b0409105f/raw/student-setup.sh';
+const GIST = 'https://gist.github.com/kokoye2007/e8d30985faca6292a50bdd3b0409105f';
+const oneLiner = `curl -fsSL ${SCRIPT} | bash`;
+
+const editors = [
+  { ext: 'Python (ms-python.python)', why: 'Python language support, run/debug' },
+  { ext: 'ESLint + Prettier', why: 'JS/TS linting + auto-format' },
+  { ext: 'GitLens', why: 'See git history/blame inline' },
+  { ext: 'Error Lens', why: 'Errors shown inline, not just underlined' },
+  { ext: 'Markdown All in One', why: 'The Tour writes a lot of markdown' },
+  { ext: 'GitHub Pull Requests', why: 'Manage PRs without leaving the editor' },
+  { ext: 'Path Intellisense', why: 'Autocomplete file paths' },
+];
+
+const ossTools = [
+  { tool: 'OpenCode', license: 'MIT', install: 'curl -fsSL https://opencode.ai/install | bash', needs: 'Any model provider' },
+  { tool: 'Codex CLI', license: 'Apache-2.0', install: 'npm i -g @openai/codex', needs: 'OpenAI account' },
+  { tool: 'Gemini CLI', license: 'Apache-2.0', install: 'npm i -g @google/gemini-cli', needs: 'Google account — free tier' },
+];
+
+const trouble = [
+  ['nvm: command not found', 'Close terminal, open new one. Or source ~/.bashrc (mac: ~/.zshrc).'],
+  ['claude: command not found', 'Close terminal, open new one. ~90% of cases.'],
+  ['command not found right after install', 'Close terminal, open new one — PATH updates on new shells.'],
+  ['Windows: nothing works in CMD/PowerShell', 'You must run inside WSL/Ubuntu, not native Windows.'],
+  ['ssh -T git@github.com → Permission denied', 'Re-check you pasted the .pub key into GitHub, right account.'],
+  ['sudo: command not found (macOS)', 'Drop sudo — use brew install instead.'],
+  ['Install script blocked', 'Antivirus or corporate proxy — try a personal network.'],
+];
+---
+
+<article class="container-prose py-12 [&_h2]:mt-10 [&_h2]:text-2xl [&_h3]:mt-6 [&_h3]:text-xl [&_p]:mt-3 [&_p]:text-gray-700 [&_ul]:mt-3 [&_ul]:list-disc [&_ul]:space-y-1 [&_ul]:pl-6 [&_li]:text-gray-700 [&_a]:text-accent-800 [&_a]:underline">
+  {locale === 'my' && (
+    <p class="mb-6 rounded-lg border border-accent-300 bg-accent-50 px-4 py-3 text-sm text-accent-800">
+      [MY] Burmese translation pending. The English guide below is authoritative until translated.
+    </p>
+  )}
+
+  <h1 class="text-3xl sm:text-4xl">Setup Guide</h1>
+  <p class="mt-4 text-lg">
+    Get your machine ready before Chapter 1. <strong>~45–60 min</strong> (90 if new to the terminal).
+    Works on <strong>Linux, macOS, and Windows (via WSL)</strong>.
+  </p>
+  <p>You'll install: a code editor, Node, Python, Git, and Claude Code — then verify it all.</p>
+
+  <h2>Fast path (one command)</h2>
+  <p>Comfortable in a terminal? This installs everything + verifies:</p>
+  <pre class="mt-3 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100"><code>{oneLiner}</code></pre>
+  <p>Safe to re-run. At the end you want: <strong>Passed: 6 &nbsp; Failed: 0</strong>. Source + this guide live on the <a href={GIST} rel="noopener" target="_blank">gist</a>.</p>
+  <p><strong>Windows:</strong> install WSL first (Step 0), then run that <em>inside Ubuntu</em>. The script doesn't do the editor (Step 5) or GitHub SSH (Step 6) — do those manually.</p>
+
+  <h2>Step 0 — Windows only: install WSL</h2>
+  <p>Native Windows isn't supported directly — you run everything inside WSL (real Linux inside Windows). In <strong>PowerShell (Admin)</strong>:</p>
+  <pre class="mt-3 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100"><code>wsl --install</code></pre>
+  <p>Reboot, open <strong>Ubuntu</strong> from Start. Everything below runs there. macOS / Linux: skip this step.</p>
+
+  <h2>Step 1 — Node.js (via nvm)</h2>
+  <pre class="mt-3 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100"><code>{`curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+# CLOSE the terminal, open a NEW one, then:
+nvm install --lts
+nvm use --lts
+nvm alias default node
+node --version   # v22.x`}</code></pre>
+  <p><strong>#1 setup mistake:</strong> forgetting to close + reopen the terminal after installing nvm. Do it.</p>
+
+  <h2>Step 2 — Python (via uv)</h2>
+  <pre class="mt-3 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100"><code>{`curl -LsSf https://astral.sh/uv/install.sh | sh
+# restart terminal, then:
+uv python install 3.12
+python3 --version   # Python 3.12.x`}</code></pre>
+
+  <h2>Step 3 — Git</h2>
+  <pre class="mt-3 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100"><code>{`# Linux / WSL
+sudo apt update && sudo apt install -y git
+# macOS
+xcode-select --install      # or: brew install git
+git --version`}</code></pre>
+
+  <h2>Step 4 — Claude Code</h2>
+  <pre class="mt-3 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100"><code>{`curl -fsSL https://claude.ai/install.sh | bash
+# if "command not found" → close terminal, open new one
+claude --version            # 2.x
+claude "Say hello in one sentence."`}</code></pre>
+  <p>A friendly reply = install, network, and account all work.</p>
+
+  <h2>Step 5 — Code editor</h2>
+  <p>Pick one (both free, both VS Code-based, so the <strong>same extensions work in either</strong>):</p>
+  <ul>
+    <li><strong>VS Code</strong> — the standard: <a href="https://code.visualstudio.com" rel="noopener" target="_blank">code.visualstudio.com</a></li>
+    <li><strong>Antigravity IDE</strong> — Google's AI-first editor (VS Code fork): <a href="https://antigravity.google" rel="noopener" target="_blank">antigravity.google</a></li>
+  </ul>
+  <h3>Recommended extensions (install in either)</h3>
+  <div class="mt-3 overflow-x-auto">
+    <table class="w-full border-collapse text-sm">
+      <thead><tr class="border-b border-gray-300 text-left"><th class="py-2 pr-4 font-semibold">Extension</th><th class="py-2 font-semibold">Why</th></tr></thead>
+      <tbody>
+        {editors.map((e) => (
+          <tr class="border-b border-gray-100"><td class="py-2 pr-4 font-mono text-gray-800">{e.ext}</td><td class="py-2 text-gray-700">{e.why}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p class="text-sm text-gray-500">Forks like Antigravity may use the Open VSX registry — all the above are on both, so search-and-install works the same.</p>
+
+  <h2>Step 6 — GitHub account + SSH</h2>
+  <p>The riskiest step — don't skip the verification.</p>
+  <pre class="mt-3 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100"><code>{`ssh-keygen -t ed25519 -C "your_email@example.com"   # Enter through prompts
+cat ~/.ssh/id_ed25519.pub                            # copy the .pub key
+# GitHub → Settings → SSH and GPG keys → New SSH key → paste
+ssh -T git@github.com                                # "Hi <username>!" = success`}</code></pre>
+  <p><strong>Never share the private key</strong> (<code>~/.ssh/id_ed25519</code>, the file without <code>.pub</code>).</p>
+
+  <h2>Step 7 — Verify everything</h2>
+  <p>Run the verifier (the fast-path script does this automatically):</p>
+  <pre class="mt-3 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100"><code>{oneLiner}</code></pre>
+  <p>Target: <strong>Passed: 6 &nbsp; Failed: 0</strong>.</p>
+
+  <h2>Troubleshooting</h2>
+  <div class="mt-3 overflow-x-auto">
+    <table class="w-full border-collapse text-sm">
+      <thead><tr class="border-b border-gray-300 text-left"><th class="py-2 pr-4 font-semibold">Symptom</th><th class="py-2 font-semibold">Fix</th></tr></thead>
+      <tbody>
+        {trouble.map((t) => (
+          <tr class="border-b border-gray-100"><td class="py-2 pr-4 font-mono text-gray-800">{t[0]}</td><td class="py-2 text-gray-700">{t[1]}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p>Still stuck? Post the <strong>exact</strong> error in the cohort channel <code>#setup-help</code>. The exact error is easy to help; "it doesn't work" is not.</p>
+
+  <h2>Optional — other AI coding tools (free / open-source)</h2>
+  <p><strong>Not required.</strong> Claude Code is our default, but the Tour is about the landscape — Chapter 7 explores alternatives. All free + open-source; each needs its own provider account (some free tiers).</p>
+  <div class="mt-3 overflow-x-auto">
+    <table class="w-full border-collapse text-sm">
+      <thead><tr class="border-b border-gray-300 text-left"><th class="py-2 pr-4 font-semibold">Tool</th><th class="py-2 pr-4 font-semibold">License</th><th class="py-2 pr-4 font-semibold">Install</th><th class="py-2 font-semibold">Needs</th></tr></thead>
+      <tbody>
+        {ossTools.map((o) => (
+          <tr class="border-b border-gray-100"><td class="py-2 pr-4 font-semibold text-gray-800">{o.tool}</td><td class="py-2 pr-4 text-gray-600">{o.license}</td><td class="py-2 pr-4 font-mono text-xs text-gray-800">{o.install}</td><td class="py-2 text-gray-700">{o.needs}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p class="text-sm text-gray-500">Also worth knowing (not on our install list): <strong>Aider</strong> and <strong>llm</strong> — open-source CLIs that run local open models via Ollama, fully free + offline. We point to them in Chapter 7. Don't install everything day one — pick one, form an opinion.</p>
+
+  <h2>What you'll have when done</h2>
+  <ul>
+    <li>VS Code or Antigravity + extensions</li>
+    <li>Node 22 + npm, Python 3.12 (via uv)</li>
+    <li>Git + GitHub SSH connected</li>
+    <li>Claude Code, running its first command</li>
+    <li>All 6 verify checks green</li>
+  </ul>
+  <p>That's the one-time tax. Pay it once, then never touch it again. See you in Chapter 1.</p>
+
+  <p class="mt-8"><a href={localizedPath('/curriculum', locale)}>← Back to curriculum</a></p>
+</article>

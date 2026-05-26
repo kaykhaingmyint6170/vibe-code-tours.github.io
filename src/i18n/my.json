@@ -16,7 +16,8 @@
     "apply": "လျှောက်ထားရန်",
     "sponsors": "ပံ့ပိုးကူညီသူများ",
     "faq": "အမေးများသောမေးခွန်းများ",
-    "contact": "ဆက်သွယ်ရန်"
+    "contact": "ဆက်သွယ်ရန်",
+    "setup": "[MY] Setup"
   },
   "footer": {
     "rights": "© 2026 Vibe Code Tours",
@@ -284,5 +285,9 @@
   "privacy": {
     "title": "ကိုယ်ရေးအချက်အလက် လုံခြုံမှုမူဝါဒ — Vibe Code Tours",
     "description": "Vibe Code Tours ၏ ကိုယ်ရေးအချက်အလက် လုံခြုံမှုမူဝါဒ v1.0.0- ကျွန်ုပ်တို့ မည်သည့်အချက်အလက်များကို စုဆောင်းသလဲ၊ ဘာကြောင့် စုဆောင်းသလဲ၊ မည်မျှကြာကြာ သိမ်းဆည်းထားသလဲ၊ မည်သူတို့ မြင်တွေ့နိုင်သလဲ၊ ပြင်ပအဖွဲ့အစည်းများနှင့် သင်၏ အခွင့်အရေးများ။"
+  },
+  "setup": {
+    "title": "[MY] Setup Guide — Vibe Code Tours",
+    "description": "[MY] Get your machine ready before Chapter 1 — Linux, macOS, or Windows (WSL). Node, Python, Git, Claude Code, editor + extensions."
   }
 }
