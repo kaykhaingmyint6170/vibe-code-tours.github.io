@@ -8,6 +8,7 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "setup:fonts": "node scripts/setup-fonts.mjs",
     "astro": "astro"
   },
   "dependencies": {
