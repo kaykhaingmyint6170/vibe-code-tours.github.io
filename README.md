@@ -1,7 +1,7 @@
 # Vibe Code Tours — public site
 
 Bilingual (English + Burmese) static site for **Vibe Code Tours**, a Myanmar AI
-coding tour. Tagline: *"A guided journey into AI-paired coding."*
+coding tour. Tagline: _"A guided journey into AI-paired coding."_
 
 Built with **Astro 5 + Tailwind CSS**, zero client JS by default, output is a
 static site that deploys free to GitHub Pages.

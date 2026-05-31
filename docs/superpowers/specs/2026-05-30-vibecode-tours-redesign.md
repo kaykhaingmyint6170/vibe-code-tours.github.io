@@ -19,25 +19,25 @@
 
 Dark base with amber accent ramp (existing brand tokens preserved):
 
-| Token | Hex | Use |
-|---|---|---|
-| bg-base | `#09090b` | Page background |
-| bg-card | `#0f0f11` | Card/section backgrounds |
-| bg-elevated | `#18181b` | Nav, footer, elevated surfaces |
-| border-subtle | `#ffffff0a` | Default card/section borders |
-| border-hover | `#f59e0b22` | Hover state borders |
-| accent-500 | `#f59e0b` | Primary buttons, stat numbers |
-| accent-600 | `#d97706` | Button hover |
-| accent-700 | `#b45309` | Links on dark |
-| text-primary | `#ffffff` | Headings |
-| text-secondary | `#888888` | Body text, descriptions |
-| text-muted | `#555555` | Tertiary info |
-| tier-a-bg | `#ffffff0a` | Tier A pill |
-| tier-a-text | `#888888` | |
-| tier-b-bg | `#3b82f611` | Tier B pill |
-| tier-b-text | `#60a5fa` | |
-| tier-c-bg | `#f59e0b11` | Tier C pill |
-| tier-c-text | `#f59e0b` | |
+| Token          | Hex         | Use                            |
+| -------------- | ----------- | ------------------------------ |
+| bg-base        | `#09090b`   | Page background                |
+| bg-card        | `#0f0f11`   | Card/section backgrounds       |
+| bg-elevated    | `#18181b`   | Nav, footer, elevated surfaces |
+| border-subtle  | `#ffffff0a` | Default card/section borders   |
+| border-hover   | `#f59e0b22` | Hover state borders            |
+| accent-500     | `#f59e0b`   | Primary buttons, stat numbers  |
+| accent-600     | `#d97706`   | Button hover                   |
+| accent-700     | `#b45309`   | Links on dark                  |
+| text-primary   | `#ffffff`   | Headings                       |
+| text-secondary | `#888888`   | Body text, descriptions        |
+| text-muted     | `#555555`   | Tertiary info                  |
+| tier-a-bg      | `#ffffff0a` | Tier A pill                    |
+| tier-a-text    | `#888888`   |                                |
+| tier-b-bg      | `#3b82f611` | Tier B pill                    |
+| tier-b-text    | `#60a5fa`   |                                |
+| tier-c-bg      | `#f59e0b11` | Tier C pill                    |
+| tier-c-text    | `#f59e0b`   |                                |
 
 ### Typography
 

@@ -1,5 +1,5 @@
 ---
-import type { Chapter } from '../data/chapters';
+import type { Chapter } from "../data/chapters";
 
 interface Props {
   chapter: Chapter;
@@ -11,14 +11,19 @@ const { chapter, readMore, href } = Astro.props;
 const { num, tag, title, outcome, tiers, duration, hero = false } = chapter;
 ---
 
-<article class:list={['card', hero && 'border-accent-500/30 bg-accent-500/5']}>
+<article class:list={["card", hero && "border-accent-500/30 bg-accent-500/5"]}>
   <div class="flex items-center gap-3">
-    <span class="rounded-md bg-white/10 px-2.5 py-1 font-mono text-sm font-bold text-accent-500">Ch{num}</span>
-    {tag && (
-      <span class="rounded-full border border-accent-500/20 bg-accent-500/10 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-accent-500">
-        {tag}
-      </span>
-    )}
+    <span
+      class="rounded-md bg-white/10 px-2.5 py-1 font-mono text-sm font-bold text-accent-500"
+      >Ch{num}</span
+    >
+    {
+      tag && (
+        <span class="rounded-full border border-accent-500/20 bg-accent-500/10 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-accent-500">
+          {tag}
+        </span>
+      )
+    }
     <span class="ml-auto text-xs text-gray-600">{duration}</span>
   </div>
 
@@ -26,10 +31,21 @@ const { num, tag, title, outcome, tiers, duration, hero = false } = chapter;
   <p class="mt-1 text-sm text-gray-500">{outcome}</p>
 
   <div class="mt-4 flex items-center gap-2">
-    {tiers.map((tier) => (
-      <span class:list={['tier', `tier-${tier.toLowerCase()}`]} title={`Tier ${tier}`}>{tier}</span>
-    ))}
+    {
+      tiers.map((tier) => (
+        <span
+          class:list={["tier", `tier-${tier.toLowerCase()}`]}
+          title={`Tier ${tier}`}
+        >
+          {tier}
+        </span>
+      ))
+    }
   </div>
 
-  <a href={href} class="mt-4 inline-block text-xs font-semibold uppercase tracking-wide text-accent-500 no-underline hover:text-accent-400">{readMore}</a>
+  <a
+    href={href}
+    class="mt-4 inline-block text-xs font-semibold uppercase tracking-wide text-accent-500 no-underline hover:text-accent-400"
+    >{readMore}</a
+  >
 </article>

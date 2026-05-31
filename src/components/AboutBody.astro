@@ -1,5 +1,5 @@
 ---
-import { t, getLocale, type Locale } from '../i18n/utils';
+import { t, getLocale, type Locale } from "../i18n/utils";
 
 const locale: Locale = getLocale(Astro.url.pathname);
 const s = t(locale).about;
@@ -12,12 +12,14 @@ const s = t(locale).about;
 
   <h2 class="mt-10 text-2xl">{s.believeHeading}</h2>
   <ul class="mt-4 space-y-4">
-    {s.beliefs.map((b) => (
-      <li class="rounded-lg border border-white/10 bg-surface-card p-5">
-        <p class="font-semibold text-white">{b.title}</p>
-        <p class="mt-1 text-gray-400">{b.body}</p>
-      </li>
-    ))}
+    {
+      s.beliefs.map((b) => (
+        <li class="rounded-lg border border-white/10 bg-surface-card p-5">
+          <p class="font-semibold text-white">{b.title}</p>
+          <p class="mt-1 text-gray-400">{b.body}</p>
+        </li>
+      ))
+    }
   </ul>
 
   <h2 class="mt-10 text-2xl">{s.notHeading}</h2>

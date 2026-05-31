@@ -12,15 +12,15 @@ gray UI.
 
 Palette (Tailwind `accent.*`, an amber ramp):
 
-| Token        | Hex       | Use |
-|--------------|-----------|-----|
-| accent-50    | `#fffbeb` | hero card bg, notice banners |
-| accent-100   | `#fef3c7` | Tier C pill bg, tag bg |
-| accent-300   | `#fcd34d` | hero card border, OG accents |
-| accent-500   | `#f59e0b` | card hover border |
-| accent-600   | `#d97706` | primary button bg |
-| accent-700   | `#b45309` | links, primary button hover, headings accents |
-| accent-800   | `#92400e` | link/button hover text on light |
+| Token      | Hex       | Use                                           |
+| ---------- | --------- | --------------------------------------------- |
+| accent-50  | `#fffbeb` | hero card bg, notice banners                  |
+| accent-100 | `#fef3c7` | Tier C pill bg, tag bg                        |
+| accent-300 | `#fcd34d` | hero card border, OG accents                  |
+| accent-500 | `#f59e0b` | card hover border                             |
+| accent-600 | `#d97706` | primary button bg                             |
+| accent-700 | `#b45309` | links, primary button hover, headings accents |
+| accent-800 | `#92400e` | link/button hover text on light               |
 
 Contrast: accent-700/800 on white and white on accent-600 both meet WCAG AA for
 normal text. Body text is `gray-800` on white (AAA).
@@ -58,22 +58,22 @@ Rendered as small circular badges (`A` / `B` / `C`) with a `title="Tier X"`.
 
 ## Component inventory
 
-| Component | Role |
-|-----------|------|
-| `layouts/Base.astro` | HTML shell, SEO/OG/Twitter meta, canonical, header+footer |
-| `components/Header.astro` | brand, primary nav, EN/မြန်မာ language switcher |
-| `components/Footer.astro` | legal links (terms/CoC/privacy/contact) + license line |
-| `components/ChapterCard.astro` | one curriculum card (badge, tag, title, outcome, tier pills, CTA) |
-| `components/LegalNotice.astro` | "[MY] translation pending" banner on Burmese legal pages |
-| `components/HomeBody.astro` | hero + 3-card grid + credibility row |
-| `components/AboutBody.astro` | beliefs + "what we're NOT" |
-| `components/TeamBody.astro` | lead instructor + photo placeholder box |
-| `components/CurriculumBody.astro` | card grid + tier legend + get/commit table |
-| `components/ApplyBody.astro` | Cohort 1 closed state |
-| `components/SponsorsBody.astro` | org + individual sponsorship |
-| `components/FaqBody.astro` | 13-item FAQ (`<dl>`) |
-| `components/ContactBody.astro` | role-based emails + channels |
-| `components/{Terms,Coc,Privacy}Body.astro` | legal page bodies |
+| Component                                  | Role                                                              |
+| ------------------------------------------ | ----------------------------------------------------------------- |
+| `layouts/Base.astro`                       | HTML shell, SEO/OG/Twitter meta, canonical, header+footer         |
+| `components/Header.astro`                  | brand, primary nav, EN/မြန်မာ language switcher                   |
+| `components/Footer.astro`                  | legal links (terms/CoC/privacy/contact) + license line            |
+| `components/ChapterCard.astro`             | one curriculum card (badge, tag, title, outcome, tier pills, CTA) |
+| `components/LegalNotice.astro`             | "[MY] translation pending" banner on Burmese legal pages          |
+| `components/HomeBody.astro`                | hero + 3-card grid + credibility row                              |
+| `components/AboutBody.astro`               | beliefs + "what we're NOT"                                        |
+| `components/TeamBody.astro`                | lead instructor + photo placeholder box                           |
+| `components/CurriculumBody.astro`          | card grid + tier legend + get/commit table                        |
+| `components/ApplyBody.astro`               | Cohort 1 closed state                                             |
+| `components/SponsorsBody.astro`            | org + individual sponsorship                                      |
+| `components/FaqBody.astro`                 | 13-item FAQ (`<dl>`)                                              |
+| `components/ContactBody.astro`             | role-based emails + channels                                      |
+| `components/{Terms,Coc,Privacy}Body.astro` | legal page bodies                                                 |
 
 ## Imagery
 

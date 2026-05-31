@@ -1,5 +1,5 @@
 ---
-import { t, getLocale, type Locale } from '../i18n/utils';
+import { t, getLocale, type Locale } from "../i18n/utils";
 
 const locale: Locale = getLocale(Astro.url.pathname);
 const s = t(locale).sponsors;
@@ -34,5 +34,9 @@ const s = t(locale).sponsors;
     {s.getList.map((item) => <li>{item}</li>)}
   </ul>
 
-  <p class="mt-6 rounded-lg border border-accent-500/20 bg-accent-500/10 px-5 py-4 font-semibold text-accent-500">{s.noSell}</p>
+  <p
+    class="mt-6 rounded-lg border border-accent-500/20 bg-accent-500/10 px-5 py-4 font-semibold text-accent-500"
+  >
+    {s.noSell}
+  </p>
 </article>

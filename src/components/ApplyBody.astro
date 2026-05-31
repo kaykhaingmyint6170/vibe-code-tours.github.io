@@ -1,13 +1,15 @@
 ---
-import { t, getLocale, type Locale } from '../i18n/utils';
+import { t, getLocale, type Locale } from "../i18n/utils";
 
 const locale: Locale = getLocale(Astro.url.pathname);
 const s = t(locale).apply;
 ---
 
 <article class="container-prose py-12">
-  <div class="inline-flex items-center gap-2 rounded-full border border-accent-500/30 bg-accent-500/10 px-4 py-1.5 text-sm font-semibold text-accent-500">
-    <span class="h-1.5 w-1.5 rounded-full bg-accent-500 animate-pulse"></span>
+  <div
+    class="inline-flex items-center gap-2 rounded-full border border-accent-500/30 bg-accent-500/10 px-4 py-1.5 text-sm font-semibold text-accent-500"
+  >
+    <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-accent-500"></span>
     Cohort 2 — Open
   </div>
   <h1 class="mt-4 text-3xl sm:text-4xl">{s.heading}</h1>

@@ -1,5 +1,5 @@
 ---
-import { t, getLocale, localizedPath, type Locale } from '../i18n/utils';
+import { t, getLocale, type Locale } from "../i18n/utils";
 
 const locale: Locale = getLocale(Astro.url.pathname);
 const s = t(locale).team;
@@ -21,9 +21,13 @@ const s = t(locale).team;
       <p class="text-xl font-bold text-white">{s.name}</p>
       <p class="mt-2 text-gray-400">{s.bio}</p>
       <ul class="mt-4 space-y-1 text-sm">
-        <li class="text-gray-400">{s.github}: <a href={s.githubUrl}>{s.githubHandle}</a></li>
+        <li class="text-gray-400">
+          {s.github}: <a href={s.githubUrl}>{s.githubHandle}</a>
+        </li>
         <li class="text-gray-400">{s.x}: <a href={s.xUrl}>{s.xHandle}</a></li>
-        <li class="text-gray-400">{s.emailLabel}: <a href={`mailto:${s.email}`}>{s.email}</a></li>
+        <li class="text-gray-400">
+          {s.emailLabel}: <a href={`mailto:${s.email}`}>{s.email}</a>
+        </li>
       </ul>
     </div>
   </div>

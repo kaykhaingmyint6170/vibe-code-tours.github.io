@@ -1,18 +1,22 @@
-@import '@fontsource/noto-sans-myanmar/400.css';
-@import '@fontsource/noto-sans-myanmar/600.css';
-@import '@fontsource/noto-sans-myanmar/700.css';
+@import "@fontsource/noto-sans-myanmar/400.css";
+@import "@fontsource/noto-sans-myanmar/600.css";
+@import "@fontsource/noto-sans-myanmar/700.css";
 
 @font-face {
-  font-family: 'Pyidaungsu';
-  src: local('Pyidaungsu'), url('/fonts/pyidaungsu/Pyidaungsu-Regular.woff2') format('woff2');
+  font-family: "Pyidaungsu";
+  src:
+    local("Pyidaungsu"),
+    url("/fonts/pyidaungsu/Pyidaungsu-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'Pyidaungsu';
-  src: local('Pyidaungsu Book'), local('Pyidaungsu'),
-    url('/fonts/pyidaungsu/Pyidaungsu-Bold.woff2') format('woff2');
+  font-family: "Pyidaungsu";
+  src:
+    local("Pyidaungsu Book"),
+    local("Pyidaungsu"),
+    url("/fonts/pyidaungsu/Pyidaungsu-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -31,10 +35,14 @@
   }
   body {
     @apply bg-surface-base text-gray-300 antialiased;
-    background-image: radial-gradient(circle at 1px 1px, #ffffff08 1px, transparent 0);
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      #ffffff08 1px,
+      transparent 0
+    );
     background-size: 24px 24px;
   }
-  html[lang='my'] body {
+  html[lang="my"] body {
     @apply font-my leading-relaxed;
   }
   a {
@@ -43,10 +51,19 @@
   h1,
   h2,
   h3 {
-    @apply text-white font-bold tracking-tight;
+    @apply font-bold tracking-tight text-white;
   }
-  :where(a, button, [role='button'], summary, .card, input, select, textarea):focus-visible {
-    @apply outline-none ring-2 ring-accent-500 ring-offset-2 ring-offset-surface-base rounded-md;
+  :where(
+    a,
+    button,
+    [role="button"],
+    summary,
+    .card,
+    input,
+    select,
+    textarea
+  ):focus-visible {
+    @apply rounded-md outline-none ring-2 ring-accent-500 ring-offset-2 ring-offset-surface-base;
   }
 }
 
@@ -58,7 +75,7 @@
     @apply inline-flex items-center justify-center rounded-lg px-5 py-3 text-base font-semibold no-underline transition;
   }
   .btn-primary {
-    @apply bg-accent-500 text-black font-bold hover:bg-accent-600;
+    @apply bg-accent-500 font-bold text-black hover:bg-accent-600;
     box-shadow: 0 0 30px #f59e0b22;
   }
   .btn-primary:hover {
@@ -71,7 +88,7 @@
     @apply block rounded-xl border border-white/5 bg-surface-card p-6 no-underline transition;
   }
   .card:hover {
-    @apply border-accent-500/20 -translate-y-0.5;
+    @apply -translate-y-0.5 border-accent-500/20;
   }
   .tier {
     @apply inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold;
@@ -90,12 +107,14 @@
     border: 1px solid #f59e0b22;
   }
   .section-label {
-    @apply text-xs font-bold uppercase tracking-widest text-accent-500 text-center;
+    @apply text-center text-xs font-bold uppercase tracking-widest text-accent-500;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

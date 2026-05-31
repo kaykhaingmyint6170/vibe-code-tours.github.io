@@ -1,7 +1,7 @@
 ---
-import { t, getLocale, localizedPath, type Locale } from '../i18n/utils';
-import { chapters } from '../data/chapters';
-import ChapterCard from './ChapterCard.astro';
+import { t, getLocale, localizedPath, type Locale } from "../i18n/utils";
+import { chapters } from "../data/chapters";
+import ChapterCard from "./ChapterCard.astro";
 
 const locale: Locale = getLocale(Astro.url.pathname);
 const s = t(locale).curriculum;
@@ -13,24 +13,43 @@ const chHref = (num: number) => localizedPath(`/curriculum/ch-${num}`, locale);
 
 <section class="mx-auto max-w-4xl px-5 py-12 sm:px-6">
   <h1 class="text-3xl sm:text-4xl">{s.heading}</h1>
-  <p class="mt-3"><span class="inline-block rounded-full border border-accent-500/20 bg-accent-500/10 px-3 py-1 text-sm font-semibold text-accent-500">{s.startDate}</span></p>
+  <p class="mt-3">
+    <span
+      class="inline-block rounded-full border border-accent-500/20 bg-accent-500/10 px-3 py-1 text-sm font-semibold text-accent-500"
+      >{s.startDate}</span
+    >
+  </p>
   <p class="mt-4 max-w-prose text-lg text-gray-400">{s.intro}</p>
   <div class="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold">
     <a href="#curriculum-grid">{s.ctaSample}</a>
   </div>
 
   <div id="curriculum-grid" class="mt-10">
-    {hero && (
-      <div class="mb-4">
-        <p class="mb-2 text-xs font-bold uppercase tracking-widest text-accent-500">{s.startHere}</p>
-        <ChapterCard chapter={hero} readMore={s.readMore} href={chHref(hero.num)} />
-      </div>
-    )}
+    {
+      hero && (
+        <div class="mb-4">
+          <p class="mb-2 text-xs font-bold uppercase tracking-widest text-accent-500">
+            {s.startHere}
+          </p>
+          <ChapterCard
+            chapter={hero}
+            readMore={s.readMore}
+            href={chHref(hero.num)}
+          />
+        </div>
+      )
+    }
 
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-      {rest.map((chapter) => (
-        <ChapterCard chapter={chapter} readMore={s.readMore} href={chHref(chapter.num)} />
-      ))}
+      {
+        rest.map((chapter) => (
+          <ChapterCard
+            chapter={chapter}
+            readMore={s.readMore}
+            href={chHref(chapter.num)}
+          />
+        ))
+      }
     </div>
   </div>
 

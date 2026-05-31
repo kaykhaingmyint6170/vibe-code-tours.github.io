@@ -9,7 +9,10 @@
     "build": "astro build",
     "preview": "astro preview",
     "setup:fonts": "node scripts/setup-fonts.mjs",
-    "astro": "astro"
+    "astro": "astro",
+    "check": "astro check",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.2.1",
@@ -17,5 +20,12 @@
     "@fontsource/noto-sans-myanmar": "^5.1.1",
     "astro": "^5.1.5",
     "tailwindcss": "^3.4.17"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "prettier": "^3.8.3",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.8.0",
+    "typescript": "^5.9.3"
   }
 }

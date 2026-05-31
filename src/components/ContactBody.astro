@@ -1,5 +1,5 @@
 ---
-import { t, getLocale, type Locale } from '../i18n/utils';
+import { t, getLocale, type Locale } from "../i18n/utils";
 
 const locale: Locale = getLocale(Astro.url.pathname);
 const s = t(locale).contact;
@@ -11,7 +11,9 @@ const s = t(locale).contact;
   <dl class="mt-8 space-y-5">
     <div>
       <dt class="font-semibold text-white">{s.applicants}</dt>
-      <dd class="mt-1"><a href={`mailto:${s.applicantsEmail}`}>{s.applicantsEmail}</a></dd>
+      <dd class="mt-1">
+        <a href={`mailto:${s.applicantsEmail}`}>{s.applicantsEmail}</a>
+      </dd>
     </div>
     <div>
       <dt class="font-semibold text-white">{s.sponsorship}</dt>
@@ -22,7 +24,9 @@ const s = t(locale).contact;
     </div>
     <div>
       <dt class="font-semibold text-white">{s.privacy}</dt>
-      <dd class="mt-1"><a href={`mailto:${s.privacyEmail}`}>{s.privacyEmail}</a></dd>
+      <dd class="mt-1">
+        <a href={`mailto:${s.privacyEmail}`}>{s.privacyEmail}</a>
+      </dd>
     </div>
     <div>
       <dt class="font-semibold text-white">{s.coc}</dt>

@@ -14,45 +14,58 @@
 //   node scripts/setup-fonts.mjs --force    re-download even if present
 //
 // Requires Node 18+ (uses global fetch). Cross-platform (pure node: APIs).
-import { mkdir, writeFile, stat } from 'node:fs/promises';
-import { fileURLToPath } from 'node:url';
-import { dirname, join } from 'node:path';
+import { mkdir, writeFile, stat } from "node:fs/promises";
+import { fileURLToPath } from "node:url";
+import { dirname, join } from "node:path";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const FONT_DIR = join(__dirname, '..', 'public', 'fonts');
+const FONT_DIR = join(__dirname, "..", "public", "fonts");
 
-const CDN = 'https://cdn.jsdelivr.net/gh/saturngod/myanmar-unicode-fonts@master/docs';
+const CDN =
+  "https://cdn.jsdelivr.net/gh/saturngod/myanmar-unicode-fonts@master/docs";
 const MIN_BYTES = 1024; // a real font is far larger; guards against error pages.
 
 // Primary body font: must already exist as woff2 (web-optimized, has Bold).
 const REQUIRED = [
-  { name: 'Pyidaungsu Regular', file: 'pyidaungsu/Pyidaungsu-Regular.woff2' },
-  { name: 'Pyidaungsu Bold', file: 'pyidaungsu/Pyidaungsu-Bold.woff2' },
+  { name: "Pyidaungsu Regular", file: "pyidaungsu/Pyidaungsu-Regular.woff2" },
+  { name: "Pyidaungsu Bold", file: "pyidaungsu/Pyidaungsu-Bold.woff2" },
 ];
 
 // Optional display/heading faces (only fetched with --display). .ttf is heavier
 // than woff2; use these sparingly (headings/logo), not body text.
 const DISPLAY = [
-  { family: 'MyanmarSquareLight', url: `${CDN}/unknown/MyanmarSquareLight.ttf`, file: 'MyanmarSquareLight.ttf' },
-  { family: 'ThitSarShweSi', url: `${CDN}/PhoenixDigitalArt/ThitSarShweSi.ttf`, file: 'ThitSarShweSi.ttf' },
-  { family: 'OneTypeChiangMai', url: `${CDN}/OneType/OneTypeChiangMai.ttf`, file: 'OneTypeChiangMai.ttf' },
+  {
+    family: "MyanmarSquareLight",
+    url: `${CDN}/unknown/MyanmarSquareLight.ttf`,
+    file: "MyanmarSquareLight.ttf",
+  },
+  {
+    family: "ThitSarShweSi",
+    url: `${CDN}/PhoenixDigitalArt/ThitSarShweSi.ttf`,
+    file: "ThitSarShweSi.ttf",
+  },
+  {
+    family: "OneTypeChiangMai",
+    url: `${CDN}/OneType/OneTypeChiangMai.ttf`,
+    file: "OneTypeChiangMai.ttf",
+  },
 ];
 
-const FORCE = process.argv.includes('--force');
-const WITH_DISPLAY = process.argv.includes('--display');
+const FORCE = process.argv.includes("--force");
+const WITH_DISPLAY = process.argv.includes("--display");
 
 // Valid TrueType/OpenType + WOFF2 magic numbers (first 4 bytes).
 const FONT_MAGICS = new Set([
-  '00010000', // TrueType
-  '74727565', // 'true'
-  '4f54544f', // 'OTTO' (CFF/OpenType)
-  '74746366', // 'ttcf' (collection)
-  '774f4632', // 'wOF2' (WOFF2)
+  "00010000", // TrueType
+  "74727565", // 'true'
+  "4f54544f", // 'OTTO' (CFF/OpenType)
+  "74746366", // 'ttcf' (collection)
+  "774f4632", // 'wOF2' (WOFF2)
 ]);
 
 function isValidFont(buf) {
   if (buf.length < MIN_BYTES) return false;
-  return FONT_MAGICS.has(buf.subarray(0, 4).toString('hex'));
+  return FONT_MAGICS.has(buf.subarray(0, 4).toString("hex"));
 }
 
 async function exists(p) {
@@ -65,13 +78,13 @@ async function exists(p) {
 }
 
 async function download(url) {
-  const res = await fetch(url, { redirect: 'follow' });
+  const res = await fetch(url, { redirect: "follow" });
   if (!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText}`);
   return Buffer.from(await res.arrayBuffer());
 }
 
 async function main() {
-  await mkdir(join(FONT_DIR, 'pyidaungsu'), { recursive: true });
+  await mkdir(join(FONT_DIR, "pyidaungsu"), { recursive: true });
 
   let missing = 0;
   for (const { name, file } of REQUIRED) {
@@ -85,7 +98,7 @@ async function main() {
   if (missing > 0) {
     console.error(
       `\n${missing} required Pyidaungsu woff2 file(s) missing. ` +
-        `Place them in public/fonts/pyidaungsu/ (Pyidaungsu-Regular.woff2, Pyidaungsu-Bold.woff2).`
+        `Place them in public/fonts/pyidaungsu/ (Pyidaungsu-Regular.woff2, Pyidaungsu-Bold.woff2).`,
     );
     process.exit(1);
   }
@@ -103,19 +116,26 @@ async function main() {
       }
       try {
         const buf = await download(url);
-        if (!isValidFont(buf)) throw new Error(`not a valid font (${buf.length} bytes)`);
+        if (!isValidFont(buf))
+          throw new Error(`not a valid font (${buf.length} bytes)`);
         await writeFile(dest, buf);
-        console.log(`ok     ${family} -> public/fonts/${file} (${(buf.length / 1024).toFixed(0)} KB)`);
+        console.log(
+          `ok     ${family} -> public/fonts/${file} (${(buf.length / 1024).toFixed(0)} KB)`,
+        );
         got++;
       } catch (err) {
         console.error(`FAIL   ${family}: ${err.message}`);
         failed++;
       }
     }
-    console.log(`\nDisplay fonts: ${got} downloaded, ${skipped} skipped, ${failed} failed.`);
+    console.log(
+      `\nDisplay fonts: ${got} downloaded, ${skipped} skipped, ${failed} failed.`,
+    );
     if (failed > 0) process.exit(1);
   } else {
-    console.log('\nPyidaungsu ready. Run with --display to also fetch the display faces.');
+    console.log(
+      "\nPyidaungsu ready. Run with --display to also fetch the display faces.",
+    );
   }
 }
 

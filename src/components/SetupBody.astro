@@ -1,32 +1,42 @@
 ---
-import { t, getLocale, localizedPath, type Locale } from '../i18n/utils';
+import { t, getLocale, localizedPath, type Locale } from "../i18n/utils";
 
 const locale: Locale = getLocale(Astro.url.pathname);
 const s = t(locale).setup;
 
-const SCRIPT = 'https://gist.githubusercontent.com/kokoye2007/e8d30985faca6292a50bdd3b0409105f/raw/student-setup.sh';
-const GIST = 'https://gist.github.com/kokoye2007/e8d30985faca6292a50bdd3b0409105f';
+const SCRIPT =
+  "https://gist.githubusercontent.com/kokoye2007/e8d30985faca6292a50bdd3b0409105f/raw/student-setup.sh";
+const GIST =
+  "https://gist.github.com/kokoye2007/e8d30985faca6292a50bdd3b0409105f";
 const oneLiner = `curl -fsSL ${SCRIPT} | bash`;
 ---
 
-<article class="container-prose py-12 [&_h2]:mt-10 [&_h2]:text-2xl [&_h3]:mt-6 [&_h3]:text-xl [&_p]:mt-3 [&_p]:text-gray-400 [&_ul]:mt-3 [&_ul]:list-disc [&_ul]:space-y-1 [&_ul]:pl-6 [&_li]:text-gray-400 [&_a]:text-accent-500 [&_a]:underline">
+<article
+  class="container-prose py-12 [&_a]:text-accent-500 [&_a]:underline [&_h2]:mt-10 [&_h2]:text-2xl [&_h3]:mt-6 [&_h3]:text-xl [&_li]:text-gray-400 [&_p]:mt-3 [&_p]:text-gray-400 [&_ul]:mt-3 [&_ul]:list-disc [&_ul]:space-y-1 [&_ul]:pl-6"
+>
   <h1 class="text-3xl sm:text-4xl">{s.h1}</h1>
   <p class="mt-4 text-lg">{s.intro1}</p>
   <p>{s.intro2}</p>
 
   <h2>{s.fastH}</h2>
   <p>{s.fastIntro}</p>
-  <pre class="mt-3 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100"><code>{oneLiner}</code></pre>
-  <p>{s.fastTarget} <a href={GIST} rel="noopener" target="_blank">{s.fastGist}</a></p>
+  <pre
+    class="mt-3 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100"><code>{oneLiner}</code></pre>
+  <p>
+    {s.fastTarget}
+    <a href={GIST} rel="noopener" target="_blank">{s.fastGist}</a>
+  </p>
   <p>{s.fastWindows}</p>
 
   <h2>{s.s0H}</h2>
   <p>{s.s0Body}</p>
-  <pre class="mt-3 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100"><code>wsl --install</code></pre>
+  <pre
+    class="mt-3 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100"><code>wsl --install</code></pre>
   <p>{s.s0After}</p>
 
   <h2>{s.s1H}</h2>
-  <pre class="mt-3 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100"><code>{`curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+  <pre
+    class="mt-3 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100"><code>{`curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 # CLOSE the terminal, open a NEW one, then:
 nvm install --lts
 nvm use --lts
@@ -35,57 +45,97 @@ node --version   # v22.x`}</code></pre>
   <p>{s.s1Note}</p>
 
   <h2>{s.s2H}</h2>
-  <pre class="mt-3 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100"><code>{`curl -LsSf https://astral.sh/uv/install.sh | sh
+  <pre
+    class="mt-3 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100"><code>{`curl -LsSf https://astral.sh/uv/install.sh | sh
 # restart terminal, then:
 uv python install 3.12
 python3 --version   # Python 3.12.x`}</code></pre>
 
   <h2>{s.s3H}</h2>
-  <pre class="mt-3 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100"><code>{`# Linux / WSL
+  <pre
+    class="mt-3 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100"><code>{`# Linux / WSL
 sudo apt update && sudo apt install -y git
 # macOS
 xcode-select --install      # or: brew install git
 git --version`}</code></pre>
 
   <h2>{s.s4H}</h2>
-  <pre class="mt-3 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100"><code>{`curl -fsSL https://claude.ai/install.sh | bash
+  <pre
+    class="mt-3 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100"><code>{`curl -fsSL https://claude.ai/install.sh | bash
 # if "command not found" -> close terminal, open new one
 claude --version            # 2.x
 claude                      # first run: opens your browser to log in`}</code></pre>
   <p>{s.s4Login}</p>
-  <pre class="mt-3 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100"><code>Say hello in one sentence.</code></pre>
+  <pre
+    class="mt-3 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100"><code>Say hello in one sentence.</code></pre>
   <p>{s.s4Note}</p>
   <p class="mt-4">{s.s4PathB}</p>
-  <pre class="mt-2 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100"><code>npm install -g @anthropic-ai/claude-code
+  <pre
+    class="mt-2 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100"><code>npm install -g @anthropic-ai/claude-code
 claude --version</code></pre>
-  <p class="mt-3 rounded-lg border-l-4 border-accent-300 bg-accent-50 px-4 py-2 text-sm text-gray-700">{s.s4Cost}</p>
+  <p
+    class="mt-3 rounded-lg border-l-4 border-accent-300 bg-accent-50 px-4 py-2 text-sm text-gray-700"
+  >
+    {s.s4Cost}
+  </p>
 
   <h2>{s.s5opH}</h2>
   <p>{s.s5opIntro}</p>
-  <pre class="mt-3 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100"><code>{`# Path A — official installer
+  <pre
+    class="mt-3 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100"><code>{`# Path A — official installer
 curl -fsSL https://opencode.ai/install | bash
 opencode --version`}</code></pre>
   <p class="mt-3">{s.s5opPathB}</p>
-  <pre class="mt-2 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100"><code>{`# Path B — npm fallback
+  <pre
+    class="mt-2 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100"><code>{`# Path B — npm fallback
 npm install -g opencode-ai
 opencode --version`}</code></pre>
   <p class="mt-3">{s.s5opAfter}</p>
-  <p class="mt-3 rounded-lg border-l-4 border-accent-300 bg-accent-50 px-4 py-2 text-sm text-gray-700">{s.s5opCost}</p>
+  <p
+    class="mt-3 rounded-lg border-l-4 border-accent-300 bg-accent-50 px-4 py-2 text-sm text-gray-700"
+  >
+    {s.s5opCost}
+  </p>
 
   <h2>{s.s5H}</h2>
   <p>{s.s5Intro}</p>
   <ul>
-    <li><strong>VS Code</strong> — {s.s5VsCode}: <a href="https://code.visualstudio.com" rel="noopener" target="_blank">code.visualstudio.com</a></li>
-    <li><strong>Antigravity IDE</strong> — {s.s5Antigravity}: <a href="https://antigravity.google" rel="noopener" target="_blank">antigravity.google</a></li>
+    <li>
+      <strong>VS Code</strong> — {s.s5VsCode}: <a
+        href="https://code.visualstudio.com"
+        rel="noopener"
+        target="_blank">code.visualstudio.com</a
+      >
+    </li>
+    <li>
+      <strong>Antigravity IDE</strong> — {s.s5Antigravity}: <a
+        href="https://antigravity.google"
+        rel="noopener"
+        target="_blank">antigravity.google</a
+      >
+    </li>
   </ul>
   <h3>{s.s5ExtH}</h3>
   <div class="mt-3 overflow-x-auto">
     <table class="w-full border-collapse text-sm">
-      <thead><tr class="border-b border-gray-300 text-left"><th class="py-2 pr-4 font-semibold">{s.colExt}</th><th class="py-2 font-semibold">{s.colWhy}</th></tr></thead>
+      <thead
+        ><tr class="border-b border-gray-300 text-left"
+          ><th class="py-2 pr-4 font-semibold">{s.colExt}</th><th
+            class="py-2 font-semibold">{s.colWhy}</th
+          ></tr
+        ></thead
+      >
       <tbody>
-        {s.editors.map((e) => (
-          <tr class="border-b border-gray-100"><td class="py-2 pr-4 font-mono text-gray-800">{e.ext}</td><td class="py-2 text-gray-700">{e.why}</td></tr>
-        ))}
+        {
+          s.editors.map((e) => (
+            <tr class="border-b border-gray-100">
+              <>
+                <td class="py-2 pr-4 font-mono text-gray-800">{e.ext}</td>
+                <td class="py-2 text-gray-700">{e.why}</td>
+              </>
+            </tr>
+          ))
+        }
       </tbody>
     </table>
   </div>
@@ -93,7 +143,8 @@ opencode --version`}</code></pre>
 
   <h2>{s.s6H}</h2>
   <p>{s.s6Intro}</p>
-  <pre class="mt-3 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100"><code>{`ssh-keygen -t ed25519 -C "your_email@example.com"   # Enter through prompts
+  <pre
+    class="mt-3 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100"><code>{`ssh-keygen -t ed25519 -C "your_email@example.com"   # Enter through prompts
 cat ~/.ssh/id_ed25519.pub                            # copy the .pub key
 # GitHub -> Settings -> SSH and GPG keys -> New SSH key -> paste
 ssh -T git@github.com                                # "Hi <username>!" = success`}</code></pre>
@@ -101,23 +152,41 @@ ssh -T git@github.com                                # "Hi <username>!" = succes
 
   <h2>{s.s7H}</h2>
   <p>{s.s7Intro}</p>
-  <pre class="mt-3 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100"><code>{oneLiner}</code></pre>
+  <pre
+    class="mt-3 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100"><code>{oneLiner}</code></pre>
   <p>{s.s7Target}</p>
 
-  <p class="mt-6 rounded-lg border border-accent-300 bg-accent-50 px-4 py-3 text-sm">
+  <p
+    class="mt-6 rounded-lg border border-accent-300 bg-accent-50 px-4 py-3 text-sm"
+  >
     <strong>{s.pricingLinkLabel}</strong>
-    {' '}
-    <a href={s.pricingLinkUrl} rel="noopener" target="_blank">{s.pricingLinkText}</a>
+    {" "}
+    <a href={s.pricingLinkUrl} rel="noopener" target="_blank"
+      >{s.pricingLinkText}</a
+    >
   </p>
 
   <h2>{s.troubleH}</h2>
   <div class="mt-3 overflow-x-auto">
     <table class="w-full border-collapse text-sm">
-      <thead><tr class="border-b border-gray-300 text-left"><th class="py-2 pr-4 font-semibold">{s.colSymptom}</th><th class="py-2 font-semibold">{s.colFix}</th></tr></thead>
+      <thead
+        ><tr class="border-b border-gray-300 text-left"
+          ><th class="py-2 pr-4 font-semibold">{s.colSymptom}</th><th
+            class="py-2 font-semibold">{s.colFix}</th
+          ></tr
+        ></thead
+      >
       <tbody>
-        {s.trouble.map((t) => (
-          <tr class="border-b border-gray-100"><td class="py-2 pr-4 font-mono text-gray-800">{t.s}</td><td class="py-2 text-gray-700">{t.f}</td></tr>
-        ))}
+        {
+          s.trouble.map((t) => (
+            <tr class="border-b border-gray-100">
+              <>
+                <td class="py-2 pr-4 font-mono text-gray-800">{t.s}</td>
+                <td class="py-2 text-gray-700">{t.f}</td>
+              </>
+            </tr>
+          ))
+        }
       </tbody>
     </table>
   </div>
@@ -127,11 +196,30 @@ ssh -T git@github.com                                # "Hi <username>!" = succes
   <p>{s.ossIntro}</p>
   <div class="mt-3 overflow-x-auto">
     <table class="w-full border-collapse text-sm">
-      <thead><tr class="border-b border-gray-300 text-left"><th class="py-2 pr-4 font-semibold">{s.colTool}</th><th class="py-2 pr-4 font-semibold">{s.colLicense}</th><th class="py-2 pr-4 font-semibold">{s.colInstall}</th><th class="py-2 font-semibold">{s.colNeeds}</th></tr></thead>
+      <thead
+        ><tr class="border-b border-gray-300 text-left"
+          ><th class="py-2 pr-4 font-semibold">{s.colTool}</th><th
+            class="py-2 pr-4 font-semibold">{s.colLicense}</th
+          ><th class="py-2 pr-4 font-semibold">{s.colInstall}</th><th
+            class="py-2 font-semibold">{s.colNeeds}</th
+          ></tr
+        ></thead
+      >
       <tbody>
-        {s.oss.map((o) => (
-          <tr class="border-b border-gray-100"><td class="py-2 pr-4 font-semibold text-gray-800">{o.tool}</td><td class="py-2 pr-4 text-gray-600">{o.license}</td><td class="py-2 pr-4 font-mono text-xs text-gray-800">{o.install}</td><td class="py-2 text-gray-700">{o.needs}</td></tr>
-        ))}
+        {
+          s.oss.map((o) => (
+            <tr class="border-b border-gray-100">
+              <>
+                <td class="py-2 pr-4 font-semibold text-gray-800">{o.tool}</td>
+                <td class="py-2 pr-4 text-gray-600">{o.license}</td>
+                <td class="py-2 pr-4 font-mono text-xs text-gray-800">
+                  {o.install}
+                </td>
+                <td class="py-2 text-gray-700">{o.needs}</td>
+              </>
+            </tr>
+          ))
+        }
       </tbody>
     </table>
   </div>
@@ -143,5 +231,7 @@ ssh -T git@github.com                                # "Hi <username>!" = succes
   </ul>
   <p>{s.doneTax}</p>
 
-  <p class="mt-8"><a href={localizedPath('/curriculum', locale)}>{s.back}</a></p>
+  <p class="mt-8">
+    <a href={localizedPath("/curriculum", locale)}>{s.back}</a>
+  </p>
 </article>

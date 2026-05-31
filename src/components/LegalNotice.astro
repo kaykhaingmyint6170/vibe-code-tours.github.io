@@ -1,9 +1,13 @@
 ---
-import { getLocale, type Locale } from '../i18n/utils';
+import { getLocale, type Locale } from "../i18n/utils";
 const locale: Locale = getLocale(Astro.url.pathname);
 ---
-{locale === 'my' && (
-  <p class="mb-6 rounded-lg border border-accent-500/30 bg-accent-500/10 px-4 py-3 text-sm text-accent-500">
-    [MY] Burmese translation pending. The English text below is authoritative until translated.
-  </p>
-)}
+
+{
+  locale === "my" && (
+    <p class="mb-6 rounded-lg border border-accent-500/30 bg-accent-500/10 px-4 py-3 text-sm text-accent-500">
+      [MY] Burmese translation pending. The English text below is authoritative
+      until translated.
+    </p>
+  )
+}

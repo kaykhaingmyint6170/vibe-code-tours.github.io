@@ -1,41 +1,65 @@
 ---
-import Base from '../layouts/Base.astro';
+import Base from "../layouts/Base.astro";
 ---
 
-<Base title="404 — Hallucination detected" description="This page doesn't exist. Yet.">
-  <section class="flex min-h-[60vh] flex-col items-center justify-center px-5 text-center">
+<Base
+  title="404 — Hallucination detected"
+  description="This page doesn't exist. Yet."
+>
+  <section
+    class="flex min-h-[60vh] flex-col items-center justify-center px-5 text-center"
+  >
     <div class="relative">
-      <p class="font-mono text-8xl font-black text-white/5 select-none sm:text-[10rem]">404</p>
-      <p class="absolute inset-0 flex items-center justify-center font-mono text-sm font-bold text-accent-500">
+      <p
+        class="select-none font-mono text-8xl font-black text-white/5 sm:text-[10rem]"
+      >
+        404
+      </p>
+      <p
+        class="absolute inset-0 flex items-center justify-center font-mono text-sm font-bold text-accent-500"
+      >
         ERROR: HALLUCINATION_DETECTED
       </p>
     </div>
 
-    <h1 class="mt-6 text-3xl font-black sm:text-4xl">Hmm, we don't have that page</h1>
+    <h1 class="mt-6 text-3xl font-black sm:text-4xl">
+      Hmm, we don't have that page
+    </h1>
 
-    <div class="mx-auto mt-6 max-w-md rounded-xl border border-white/10 bg-surface-card p-5 text-left font-mono text-sm">
-      <p class="text-gray-600">$ curl vibecode.tours<span class="text-accent-500" id="typed-path"></span></p>
+    <div
+      class="mx-auto mt-6 max-w-md rounded-xl border border-white/10 bg-surface-card p-5 text-left font-mono text-sm"
+    >
+      <p class="text-gray-600">
+        $ curl vibecode.tours<span class="text-accent-500" id="typed-path"
+        ></span>
+      </p>
       <div class="mt-3 space-y-2">
         <p class="text-gray-500">🤔 Searching context window...</p>
-        <p class="text-gray-500" id="line2">📭 0 results found in training data</p>
-        <p class="text-accent-500 font-bold" id="line3">✨ Want me to generate it for you?</p>
+        <p class="text-gray-500" id="line2">
+          📭 0 results found in training data
+        </p>
+        <p class="font-bold text-accent-500" id="line3">
+          ✨ Want me to generate it for you?
+        </p>
       </div>
     </div>
 
     <p class="mt-6 max-w-sm text-sm text-gray-600">
-      Even Claude hallucinates sometimes. This page doesn't exist — but hey, that's what Chapter 2 is for.
+      Even Claude hallucinates sometimes. This page doesn't exist — but hey,
+      that's what Chapter 2 is for.
     </p>
 
     <div class="mt-8 flex flex-col items-center gap-3 sm:flex-row">
       <a href="/" class="btn btn-primary">Back to Home →</a>
-      <a href="/curriculum" class="btn btn-secondary">Fix my context window →</a>
+      <a href="/curriculum" class="btn btn-secondary">Fix my context window →</a
+      >
     </div>
   </section>
 </Base>
 
 <script>
   const path = window.location.pathname;
-  const el = document.getElementById('typed-path');
+  const el = document.getElementById("typed-path");
   if (el) {
     let i = 0;
     const type = () => {
@@ -48,15 +72,18 @@ import Base from '../layouts/Base.astro';
     type();
   }
 
-  const lines = ['line2', 'line3'];
+  const lines = ["line2", "line3"];
   lines.forEach((id, idx) => {
     const line = document.getElementById(id);
     if (line) {
-      line.style.opacity = '0';
-      setTimeout(() => {
-        line.style.transition = 'opacity 0.4s';
-        line.style.opacity = '1';
-      }, 800 + idx * 600);
+      line.style.opacity = "0";
+      setTimeout(
+        () => {
+          line.style.transition = "opacity 0.4s";
+          line.style.opacity = "1";
+        },
+        800 + idx * 600,
+      );
     }
   });
 </script>

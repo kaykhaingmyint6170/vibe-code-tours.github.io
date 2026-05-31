@@ -1,7 +1,7 @@
 ---
-import { t, getLocale, localizedPath, type Locale } from '../i18n/utils';
-import { chapters } from '../data/chapters';
-import detail from '../data/chapters-detail.json';
+import { t, getLocale, localizedPath, type Locale } from "../i18n/utils";
+import { chapters } from "../data/chapters";
+import detail from "../data/chapters-detail.json";
 
 interface Props {
   num: number;
@@ -12,69 +12,99 @@ const locale: Locale = getLocale(Astro.url.pathname);
 const s = t(locale).chapterDetail;
 
 const chapter = chapters.find((c) => c.num === num);
-const blocks = (detail as Record<string, { title: string; blocks: any[] }>)[String(num)]?.blocks ?? [];
+const blocks =
+  (detail as Record<string, { title: string; blocks: any[] }>)[String(num)]
+    ?.blocks ?? [];
 ---
 
 <section class="mx-auto max-w-3xl px-5 py-12 sm:px-6">
-  {locale === 'my' && (
-    <p class="mb-6 rounded-lg border border-accent-500/30 bg-accent-500/10 px-4 py-3 text-sm text-accent-500">
-      {s.myPending}
-    </p>
-  )}
+  {
+    locale === "my" && (
+      <p class="mb-6 rounded-lg border border-accent-500/30 bg-accent-500/10 px-4 py-3 text-sm text-accent-500">
+        {s.myPending}
+      </p>
+    )
+  }
 
-  <a href={localizedPath('/curriculum', locale)} class="text-sm font-semibold text-accent-500">{s.back}</a>
+  <a
+    href={localizedPath("/curriculum", locale)}
+    class="text-sm font-semibold text-accent-500">{s.back}</a
+  >
 
-  {chapter && (
-    <header class="mt-4">
-      <div class="flex items-center gap-3">
-        <span class="rounded-md bg-white/10 px-2.5 py-1 text-sm font-bold text-white">Ch{chapter.num}</span>
-        {chapter.tag && (
-          <span class="rounded-full bg-accent-500/10 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-accent-500">
-            {chapter.tag}
+  {
+    chapter && (
+      <header class="mt-4">
+        <div class="flex items-center gap-3">
+          <span class="rounded-md bg-white/10 px-2.5 py-1 text-sm font-bold text-white">
+            Ch{chapter.num}
           </span>
-        )}
-        <span class="ml-auto text-xs text-gray-300">{s.durationLabel}: {chapter.duration}</span>
-      </div>
-      <h1 class="mt-3 text-3xl sm:text-4xl">{chapter.title}</h1>
-      <p class="mt-2 text-lg text-gray-400">{chapter.outcome}</p>
-      <div class="mt-4 flex items-center gap-2">
-        {chapter.tiers.map((tier) => (
-          <span class:list={['tier', `tier-${tier.toLowerCase()}`]} title={`Tier ${tier}`}>{tier}</span>
-        ))}
-      </div>
-    </header>
-  )}
+          {chapter.tag && (
+            <span class="rounded-full bg-accent-500/10 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-accent-500">
+              {chapter.tag}
+            </span>
+          )}
+          <span class="ml-auto text-xs text-gray-300">
+            {s.durationLabel}: {chapter.duration}
+          </span>
+        </div>
+        <h1 class="mt-3 text-3xl sm:text-4xl">{chapter.title}</h1>
+        <p class="mt-2 text-lg text-gray-400">{chapter.outcome}</p>
+        <div class="mt-4 flex items-center gap-2">
+          {chapter.tiers.map((tier) => (
+            <span
+              class:list={["tier", `tier-${tier.toLowerCase()}`]}
+              title={`Tier ${tier}`}
+            >
+              {tier}
+            </span>
+          ))}
+        </div>
+      </header>
+    )
+  }
 
-  {blocks.length > 0 ? (
-    <div class="mt-10">
-      <h2 class="text-2xl">{s.blocksHeading}</h2>
-      <p class="mt-2 max-w-prose text-gray-600">{s.blocksIntro}</p>
-      <ol class="mt-6 space-y-4">
-        {blocks.map((b) => (
-          <li class="card">
-            <div class="flex items-start gap-3">
-              <div class="flex shrink-0 gap-1">
-                {[...b.tier].map((c) => (
-                  <span class:list={['tier', `tier-${c.toLowerCase()}`]} title={`Tier ${c}`}>{c}</span>
-                ))}
-              </div>
-              <div class="min-w-0">
-                <div class="flex flex-wrap items-baseline gap-x-3">
-                  <h3 class="text-base font-semibold">{b.title}</h3>
-                  <span class="text-xs text-gray-300">{b.dur}</span>
+  {
+    blocks.length > 0 ? (
+      <div class="mt-10">
+        <h2 class="text-2xl">{s.blocksHeading}</h2>
+        <p class="mt-2 max-w-prose text-gray-600">{s.blocksIntro}</p>
+        <ol class="mt-6 space-y-4">
+          {blocks.map((b) => (
+            <li class="card">
+              <div class="flex items-start gap-3">
+                <div class="flex shrink-0 gap-1">
+                  {[...b.tier].map((c) => (
+                    <span
+                      class:list={["tier", `tier-${c.toLowerCase()}`]}
+                      title={`Tier ${c}`}
+                    >
+                      {c}
+                    </span>
+                  ))}
                 </div>
-                <p class="mt-1 text-sm text-gray-600">{b.outcome}</p>
+                <div class="min-w-0">
+                  <div class="flex flex-wrap items-baseline gap-x-3">
+                    <h3 class="text-base font-semibold">{b.title}</h3>
+                    <span class="text-xs text-gray-300">{b.dur}</span>
+                  </div>
+                  <p class="mt-1 text-sm text-gray-600">{b.outcome}</p>
+                </div>
               </div>
-            </div>
-          </li>
-        ))}
-      </ol>
-    </div>
-  ) : (
-    <div class="mt-10 rounded-lg border border-white/10 bg-white/5 p-6">
-      <h2 class="text-xl">{s.ch0Heading}</h2>
-      <p class="mt-2 text-gray-400">{s.ch0Body}</p>
-      <a href={localizedPath('/setup', locale)} class="mt-4 inline-block text-sm font-semibold text-accent-500">{s.ch0Cta}</a>
-    </div>
-  )}
+            </li>
+          ))}
+        </ol>
+      </div>
+    ) : (
+      <div class="mt-10 rounded-lg border border-white/10 bg-white/5 p-6">
+        <h2 class="text-xl">{s.ch0Heading}</h2>
+        <p class="mt-2 text-gray-400">{s.ch0Body}</p>
+        <a
+          href={localizedPath("/setup", locale)}
+          class="mt-4 inline-block text-sm font-semibold text-accent-500"
+        >
+          {s.ch0Cta}
+        </a>
+      </div>
+    )
+  }
 </section>
