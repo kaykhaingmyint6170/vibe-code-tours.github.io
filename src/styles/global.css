@@ -30,6 +30,9 @@
 @layer base {
   :root {
     color-scheme: dark;
+    /* Strong easing curves (built-in CSS easings are too weak) */
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   }
   html {
     scroll-behavior: smooth;
@@ -75,7 +78,16 @@
     @apply mx-auto w-full max-w-3xl px-5 sm:px-6;
   }
   .btn {
-    @apply inline-flex items-center justify-center rounded-lg px-5 py-3 text-base font-semibold no-underline transition;
+    @apply inline-flex items-center justify-center rounded-lg px-5 py-3 text-base font-semibold no-underline;
+    transition:
+      transform 160ms var(--ease-out),
+      background-color 160ms var(--ease-out),
+      border-color 160ms var(--ease-out),
+      box-shadow 200ms var(--ease-out),
+      color 160ms var(--ease-out);
+  }
+  .btn:active {
+    transform: scale(0.97);
   }
   .btn-primary {
     @apply bg-accent-500 font-bold text-black hover:bg-accent-600;
@@ -88,7 +100,10 @@
     @apply border border-white/10 bg-transparent text-gray-300 hover:border-accent-500/30 hover:text-white;
   }
   .card {
-    @apply block rounded-xl border border-white/5 bg-surface-card p-6 no-underline transition;
+    @apply block rounded-xl border border-white/5 bg-surface-card p-6 no-underline;
+    transition:
+      transform 200ms var(--ease-out),
+      border-color 200ms var(--ease-out);
   }
   .card:hover {
     @apply -translate-y-0.5 border-accent-500/20;
