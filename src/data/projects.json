@@ -634,7 +634,7 @@
     "desc": "TripGenie — a React single-page application for trip/travel planning",
     "repo_url": "https://github.com/Heinkhantphyoe/Trip-Genie",
     "live_url": "https://ai-trip-genie-77.vercel.app/",
-    "slides_raw": "https://raw.githubusercontent.com/Heinkhantphyoe/Trip-Genie/main/slides/tech-stack.md",
+    "slides_raw": "https://raw.githubusercontent.com/Heinkhantphyoe/Trip-Genie/main/slides/pitch.md",
     "slides_base": "https://raw.githubusercontent.com/Heinkhantphyoe/Trip-Genie/main/slides/",
     "screenshot_url": "https://raw.githubusercontent.com/Heinkhantphyoe/Trip-Genie/main/screenshots/home.png",
     "screenshots": [
@@ -653,7 +653,7 @@
       "CSS",
       "HTML"
     ],
-    "chapter": 5,
+    "chapter": 6,
     "team": 3
   },
   {
@@ -1089,7 +1089,13 @@
     "screenshots": [
       "https://raw.githubusercontent.com/kohtun386/POS-system/main/docs/screenshots/reports.png",
       "https://raw.githubusercontent.com/kohtun386/POS-system/main/docs/screenshots/checkout.png",
-      "https://raw.githubusercontent.com/kohtun386/POS-system/main/docs/screenshots/pos-terminal.png"
+      "https://raw.githubusercontent.com/kohtun386/POS-system/main/docs/screenshots/pos-terminal.png",
+      "https://raw.githubusercontent.com/kohtun386/POS-system/main/docs/screenshots/pos-desktop-1280x800.png",
+      "https://raw.githubusercontent.com/kohtun386/POS-system/main/docs/screenshots/reports-mobile-390x844.png",
+      "https://raw.githubusercontent.com/kohtun386/POS-system/main/docs/screenshots/alerts-desktop-1280x800.png",
+      "https://raw.githubusercontent.com/kohtun386/POS-system/main/docs/screenshots/reports-desktop-1280x800.png",
+      "https://raw.githubusercontent.com/kohtun386/POS-system/main/docs/screenshots/customers-desktop-1280x800.png",
+      "https://raw.githubusercontent.com/kohtun386/POS-system/main/docs/screenshots/inventory-desktop-1280x800.png"
     ],
     "type": "web-app",
     "stack": [
@@ -1097,7 +1103,7 @@
       "HTML",
       "PLpgSQL"
     ],
-    "chapter": 5,
+    "chapter": 6,
     "team": 7
   },
   {
@@ -1106,14 +1112,17 @@
     "title": "vibecode-dailyplanner",
     "desc": "VibeCodeTour Personal Project",
     "repo_url": "https://github.com/kokaunghtet/vibecode-dailyplanner",
-    "live_url": "https://vibecode-dailyplanner.web.app/",
-    "slides_raw": "https://raw.githubusercontent.com/kokaunghtet/vibecode-dailyplanner/master/slides/tech-stack.md",
+    "live_url": "https://vibecode-dailyplanner.web.app",
+    "slides_raw": "https://raw.githubusercontent.com/kokaunghtet/vibecode-dailyplanner/master/slides/pitch.md",
     "slides_base": "https://raw.githubusercontent.com/kokaunghtet/vibecode-dailyplanner/master/slides/",
-    "screenshot_url": "https://raw.githubusercontent.com/kokaunghtet/vibecode-dailyplanner/master/screenshots/login.png",
+    "screenshot_url": "https://raw.githubusercontent.com/kokaunghtet/vibecode-dailyplanner/master/screenshots/01-login.png",
     "screenshots": [
-      "https://raw.githubusercontent.com/kokaunghtet/vibecode-dailyplanner/master/screenshots/login.png",
-      "https://raw.githubusercontent.com/kokaunghtet/vibecode-dailyplanner/master/screenshots/today.png",
-      "https://raw.githubusercontent.com/kokaunghtet/vibecode-dailyplanner/master/screenshots/calendar.png"
+      "https://raw.githubusercontent.com/kokaunghtet/vibecode-dailyplanner/master/screenshots/01-login.png",
+      "https://raw.githubusercontent.com/kokaunghtet/vibecode-dailyplanner/master/screenshots/02-today.png",
+      "https://raw.githubusercontent.com/kokaunghtet/vibecode-dailyplanner/master/screenshots/03-calendar.png",
+      "https://raw.githubusercontent.com/kokaunghtet/vibecode-dailyplanner/master/screenshots/04-login-mobile.png",
+      "https://raw.githubusercontent.com/kokaunghtet/vibecode-dailyplanner/master/screenshots/05-today-mobile.png",
+      "https://raw.githubusercontent.com/kokaunghtet/vibecode-dailyplanner/master/screenshots/06-calendar-mobile.png"
     ],
     "type": "web-app",
     "stack": [
@@ -1121,7 +1130,7 @@
       "TypeScript",
       "JavaScript"
     ],
-    "chapter": 5,
+    "chapter": 6,
     "team": 13
   },
   {
@@ -1901,11 +1910,12 @@
     "live_url": "https://personal-project-xi-coral.vercel.app/",
     "slides_raw": "https://raw.githubusercontent.com/Samm24TT/Personal-Project/main/slides/tech-stack.md",
     "slides_base": "https://raw.githubusercontent.com/Samm24TT/Personal-Project/main/slides/",
-    "screenshot_url": "https://raw.githubusercontent.com/Samm24TT/Personal-Project/main/screenshots/gameplay.png",
+    "screenshot_url": "https://raw.githubusercontent.com/Samm24TT/Personal-Project/main/screenshots/game-play.png",
     "screenshots": [
-      "https://raw.githubusercontent.com/Samm24TT/Personal-Project/main/screenshots/gameplay.png",
+      "https://raw.githubusercontent.com/Samm24TT/Personal-Project/main/screenshots/game-play.png",
       "https://raw.githubusercontent.com/Samm24TT/Personal-Project/main/screenshots/leaderboard.png",
-      "https://raw.githubusercontent.com/Samm24TT/Personal-Project/main/screenshots/start-screen.png"
+      "https://raw.githubusercontent.com/Samm24TT/Personal-Project/main/screenshots/start-screen.png",
+      "https://raw.githubusercontent.com/Samm24TT/Personal-Project/main/screenshots/custome-player.png"
     ],
     "type": "web-app",
     "stack": [
@@ -1913,7 +1923,7 @@
       "CSS",
       "HTML"
     ],
-    "chapter": 5,
+    "chapter": 6,
     "team": 5
   },
   {
@@ -2075,7 +2085,7 @@
       "JavaScript",
       "HTML"
     ],
-    "chapter": 5,
+    "chapter": 6,
     "team": 17
   },
   {
@@ -2152,7 +2162,7 @@
     "stack": [
       "Python",
       "CSS",
-      "HTML"
+      "JavaScript"
     ],
     "chapter": 5,
     "team": 19
